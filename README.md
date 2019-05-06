@@ -23,7 +23,13 @@ This is my most ambitious project yet. I plan to implement everything that I hav
 ## 3. Contributing
 
 Just fork the project and make the changes that you find necessary. If you use IntelliJ, you just need to open the folder
-as a project. Then make sure to right click on "src/res" add "Mark Directory as" -> "Resources root".
+as a project. Then make sure to right click on:
+- "src/main/resources" add "Mark Directory as" -> "Resources root",
+- "src/main/java", add "Mark Directory as" -> "Sources root",
+- "src/test/java", add "Mark Directory as" -> "Test Sources root",
+- "src/demo/java", add "Mark Directory as" -> "Sources root",
+- "src/demo/resources", add "Mark Directory as" -> "Resources root".
+
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## 4. Contributors

@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 public class GameLoop {
 
-    // Lo4j2 logger: its properties are found in "log4j2.properties" in res/ folder.
+    // Lo4j2 logger: its properties are found in "log4j2.properties" in resources/ folder.
     private static final Logger LOGGER = LogManager.getLogger(NeroEngine.class.getName());
 
     private static AnimationTimer gameThread;
