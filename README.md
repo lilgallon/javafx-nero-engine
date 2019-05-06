@@ -18,7 +18,11 @@ This is my most ambitious project yet. I plan to implement everything that I hav
 - University of Bordeaux.
 
 **Libraries used:**
-- Apache : [log4j 2](https://logging.apache.org/log4j/2.x/), Apache Log4j 2 is an upgrade to Log4j that provides significant improvements over its predecessor, Log4j 1.x, and provides many of the improvements available in Logback while fixing some inherent problems in Logback’s architecture.
+
+| Library                                                  | Description                                                                                                                                                                                                                             | Useful links                                                                         |
+|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| Gluon JavaFX 12 | JavaFX allows you to create Java applications with a modern, hardware-accelerated user interface that is highly portable.                                                                                                               | [Gluon website](https://gluonhq.com/products/javafx/), [OpenJFX website](https://openjfx.io/index.html)                                             |
+| Apache Log4j2 | Apache Log4j 2 is an upgrade to Log4j that provides significant improvements over its predecessor, Log4j 1.x, and provides many of the improvements available in Logback while fixing some inherent problems in Logback’s architecture. | [Documentation](https://logging.apache.org/log4j/2.0/log4j-api/apidocs/index.html), [Website](https://logging.apache.org/log4j/2.x/)   |
 
 ## 3. Contributing
 
