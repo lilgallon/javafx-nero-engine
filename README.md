@@ -3,7 +3,7 @@
 
 ![release](https://img.shields.io/github/release/n3roo/nero-engine.svg) ![tag](https://img.shields.io/github/tag/n3roo/nero-engine.svg) ![issues](https://img.shields.io/github/issues/n3roo/nero-engine.svg) ![license](https://img.shields.io/github/license/n3roo/nero-engine.svg)
 
-A java 2D game engine powered by JavaFX.
+A java 2D game engine powered by JavaFX 12.
 
 ## 1. Progression
 
@@ -22,13 +22,14 @@ This is my most ambitious project yet. I plan to implement everything that I hav
 
 ## 3. Contributing
 
-Just fork the project and make the changes that you find necessary. If you use IntelliJ, you just need to open the folder
+Just fork the project and make the changes that you find necessary. If you use IntelliJ, you need to open the folder
 as a project. Then make sure to right click on:
 - "src/main/resources" add "Mark Directory as" -> "Resources root",
 - "src/main/java", add "Mark Directory as" -> "Sources root",
 - "src/test/java", add "Mark Directory as" -> "Test Sources root",
 - "src/demo/java", add "Mark Directory as" -> "Sources root",
 - "src/demo/resources", add "Mark Directory as" -> "Resources root".
+Also, make sure to use Java 12 (File -> Project Structure -> Project SDK: 12 & Language level: 12 ).
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
