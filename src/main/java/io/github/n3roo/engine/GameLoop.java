@@ -35,6 +35,7 @@ public class GameLoop {
                 past = now;
             }
         };
+        gameThread.start();
     }
 
     public void start(){
