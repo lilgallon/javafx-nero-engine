@@ -37,12 +37,14 @@ public class NeroEngine extends Application {
 
         // Start the engine components
         LOGGER.info("Creating event handlers");
-        EventManager.init(stage.getScene());
+        EventManager.init(stage);
 
         LOGGER.info("Starting game loop");
         GameLoop.start(stage, canvas.getGraphicsContext2D(), fps);
 
         LOGGER.info("Showing stage");
         stage.show();
+
+
     }
 }
