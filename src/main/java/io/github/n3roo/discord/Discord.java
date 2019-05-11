@@ -12,6 +12,9 @@ public class Discord {
     // Lo4j2 logger: its properties are found in "log4j2.properties" in resources/ folder.
     private static final Logger LOGGER = LogManager.getLogger(Discord.class.getName());
 
+    // Number of Discord instances
+    private static int instances = 0;
+
     // The discordRPC lib
     protected DiscordRPC lib = DiscordRPC.INSTANCE;
 
@@ -22,7 +25,10 @@ public class Discord {
      * It creates all the needed handlers.
      * @param appId your application ID (https://discordapp.com/developers/applications/).
      */
-    public Discord(String appId){
+    public Discord(String appId) throws InstantiationException{
+        instances ++;
+        if(instances > 1) throw new InstantiationException("Discord should not be instanced multiple times");
+
         presence = new DiscordRichPresence();
 
         LOGGER.info("DISCORD: handlers creation");
