@@ -12,8 +12,7 @@ public class Discord {
     // Lo4j2 logger: its properties are found in "log4j2.properties" in resources/ folder.
     private static final Logger LOGGER = LogManager.getLogger(Discord.class.getName());
 
-    // Number of Discord instances
-    private static int instances = 0;
+    private static Discord INSTANCE = null;
 
     // The discordRPC lib
     protected DiscordRPC lib = DiscordRPC.INSTANCE;
@@ -25,9 +24,7 @@ public class Discord {
      * It creates all the needed handlers.
      * @param appId your application ID (https://discordapp.com/developers/applications/).
      */
-    public Discord(String appId) throws InstantiationException{
-        instances ++;
-        if(instances > 1) throw new InstantiationException("Discord should not be instanced multiple times");
+    private Discord(String appId) {
 
         presence = new DiscordRichPresence();
 
@@ -58,6 +55,28 @@ public class Discord {
         EventManager.addOnEngineClosingListener(() -> lib.Discord_Shutdown());
 
         LOGGER.info("DISCORD: Connection...");
+    }
+
+    /**
+     * It creates all the needed handlers.
+     * @param appId your application ID (https://discordapp.com/developers/applications/).
+     */
+    public synchronized static Discord init(String appId) {
+        if (INSTANCE != null)
+        {
+            throw new AssertionError("You already initialized Discord");
+        }
+
+        INSTANCE = new Discord(appId);
+        return INSTANCE;
+    }
+
+    public static Discord getInstance() {
+        if(INSTANCE == null){
+            throw new AssertionError("You have to call init first");
+        }
+
+        return INSTANCE;
     }
 
     /**
