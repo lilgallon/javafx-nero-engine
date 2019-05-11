@@ -12,13 +12,19 @@ public class Discord {
     // Lo4j2 logger: its properties are found in "log4j2.properties" in resources/ folder.
     private static final Logger LOGGER = LogManager.getLogger(Discord.class.getName());
 
-    // nero-engine app id
-    private final String APP_ID = "576397580620005377";
-
     // The discordRPC lib
-    private DiscordRPC lib = DiscordRPC.INSTANCE;
+    protected DiscordRPC lib = DiscordRPC.INSTANCE;
 
-    public Discord(){
+    // The discordRPC information
+    protected DiscordRichPresence presence;
+
+    /**
+     * It creates all the needed handlers.
+     * @param appId your application ID (https://discordapp.com/developers/applications/).
+     */
+    public Discord(String appId){
+        presence = new DiscordRichPresence();
+
         LOGGER.info("DISCORD: handlers creation");
         DiscordEventHandlers handlers = new DiscordEventHandlers();
         handlers.ready = (var) -> handleReady();
@@ -27,7 +33,7 @@ public class Discord {
         handlers.joinGame = (var) -> handleJoinGame();
         handlers.spectateGame = (var) -> handleSpectateGame();
         handlers.joinRequest = (var) -> handleJoinRequest();
-        lib.Discord_Initialize(APP_ID, handlers, true, "");
+        lib.Discord_Initialize(appId, handlers, true, "");
 
         // TODO: is it better to do it in World.update()?
         LOGGER.info("DISCORD: Creating a callback handler thread");
@@ -77,23 +83,21 @@ public class Discord {
     public void updatePresence(String state, String details, long startTimestamp, long endTimestamp,
                                String largeImageKey, String largeImageText, String smallImageKey, String smallImageText,
                                String partyId, int partySize, int partyMax, String spectateSecret, String joinSecret){
-        DiscordRichPresence discordRichPresence = new DiscordRichPresence();
+        if(!state.equals("")) presence.state = state;
+        if(!details.equals("")) presence.details = details;
+        if(startTimestamp != -1) presence.startTimestamp = startTimestamp;
+        if(endTimestamp != -1) presence.endTimestamp = endTimestamp;
+        if(!largeImageKey.equals("")) presence.largeImageKey = largeImageKey;
+        if(!largeImageText.equals("")) presence.largeImageText = largeImageText;
+        if(!smallImageKey.equals("")) presence.smallImageKey = smallImageKey;
+        if(!smallImageText.equals("")) presence.smallImageText = smallImageText;
+        if(!partyId.equals("")) presence.partyId = partyId;
+        if(partySize != -1) presence.partySize = partySize;
+        if(partyMax != -1) presence.partyMax = partyMax;
+        if(!spectateSecret.equals("")) presence.spectateSecret = spectateSecret;
+        if(!joinSecret.equals("")) presence.joinSecret = joinSecret;
 
-        discordRichPresence.state = state.equals("") ? null : state;
-        discordRichPresence.details = details.equals("") ? null : details;
-        if(startTimestamp != -1) discordRichPresence.startTimestamp = startTimestamp;
-        if(endTimestamp != -1) discordRichPresence.endTimestamp = endTimestamp;
-        discordRichPresence.largeImageKey = largeImageKey.equals("") ? null : largeImageKey;
-        discordRichPresence.largeImageText = largeImageText.equals("") ? null : largeImageText;
-        discordRichPresence.smallImageKey = smallImageKey.equals("") ? null : smallImageKey;
-        discordRichPresence.smallImageText = smallImageText.equals("") ? null : smallImageText;
-        discordRichPresence.partyId = partyId.equals("") ? null : partyId;
-        if(partySize != -1) discordRichPresence.partySize = partySize;
-        if(partyMax != -1) discordRichPresence.partyMax = partyMax;
-        discordRichPresence.spectateSecret = spectateSecret.equals("") ? null : spectateSecret;
-        discordRichPresence.joinSecret = joinSecret.equals("") ? null : joinSecret;
-
-        lib.Discord_UpdatePresence(discordRichPresence);
+        lib.Discord_UpdatePresence(presence);
     }
 
     /**
@@ -102,11 +106,23 @@ public class Discord {
      * @param discordRichPresence presence information.
      */
     public void updatePresence(DiscordRichPresence discordRichPresence){
-        lib.Discord_UpdatePresence(discordRichPresence);
+        presence = discordRichPresence;
+        lib.Discord_UpdatePresence(presence);
     }
 
+    /**
+     * It clears all the information about discord presence.
+     */
     public void clearPresence(){
+        presence = new DiscordRichPresence();
         lib.Discord_ClearPresence();
+    }
+
+    /**
+     * @return DiscordRichPresence instance with all the presence information.
+     */
+    public DiscordRichPresence getPresence(){
+        return presence;
     }
 
     // Override these methods to handle events
@@ -114,7 +130,7 @@ public class Discord {
     protected void handleReady(){ LOGGER.info("DISCORD: ready"); }
     protected void handleError(){ LOGGER.info("DISCORD: error"); }
     protected void handleDisconnected(){ LOGGER.info("DISCORD: disconnected"); }
-    protected void handleJoinGame(){}
-    protected void handleSpectateGame(){}
-    protected void handleJoinRequest(){}
+    protected void handleJoinGame(){ LOGGER.info("DISCORD: join game"); }
+    protected void handleSpectateGame(){ LOGGER.info("DISCORD: spectate game"); }
+    protected void handleJoinRequest(){ LOGGER.info("DISCORD: join request"); }
 }

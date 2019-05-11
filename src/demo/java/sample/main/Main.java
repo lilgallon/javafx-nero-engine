@@ -11,7 +11,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         NeroEngine.init(stage);
 
-        Discord discord = new Discord();
+        Discord discord = new Discord("576397580620005377");
         discord.updatePresence("Nero engine", "working on v0.1", -1, -1,
                 "nero-engine-square", "Large image text",
                 "", "Small image text",
