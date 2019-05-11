@@ -12,6 +12,7 @@ public class Discord {
     // Lo4j2 logger: its properties are found in "log4j2.properties" in resources/ folder.
     private static final Logger LOGGER = LogManager.getLogger(Discord.class.getName());
 
+    // The discord instance because it is a singleton
     private static Discord INSTANCE = null;
 
     // The discordRPC lib
@@ -38,7 +39,6 @@ public class Discord {
         handlers.joinRequest = (var) -> handleJoinRequest();
         lib.Discord_Initialize(appId, handlers, true, "");
 
-        // TODO: is it better to do it in World.update()?
         LOGGER.info("DISCORD: Creating a callback handler thread");
         Thread callbackHandler = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
@@ -71,6 +71,10 @@ public class Discord {
         return INSTANCE;
     }
 
+    /**
+     * /!\ You need to call Discord.init(...) first!
+     * @return the discord instance.
+     */
     public static Discord getInstance() {
         if(INSTANCE == null){
             throw new AssertionError("You have to call init first");
