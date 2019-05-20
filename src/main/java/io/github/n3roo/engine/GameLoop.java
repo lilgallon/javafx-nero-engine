@@ -30,7 +30,7 @@ public class GameLoop {
                 double delta = (past == -1) ? (now - past) / 1e9 : 1f;
 
                 World.update(delta);
-                World.render();
+                World.render(graphicsContext);
 
                 past = now;
             }

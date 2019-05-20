@@ -1,6 +1,7 @@
 package io.github.n3roo.world;
 
 import io.github.n3roo.hud.HudComponent;
+import javafx.scene.canvas.GraphicsContext;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -15,9 +16,9 @@ public class World {
         }
     }
 
-    public static void render(){
+    public static void render(GraphicsContext g){
         for(HudComponent hudComponent : hudComponents){
-            hudComponent.render();
+            hudComponent.render(g);
         }
     }
 

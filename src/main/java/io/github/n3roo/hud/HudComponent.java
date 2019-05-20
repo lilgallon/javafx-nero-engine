@@ -1,5 +1,7 @@
 package io.github.n3roo.hud;
 
+import javafx.scene.canvas.GraphicsContext;
+
 public abstract class HudComponent {
 
     /**
@@ -11,5 +13,5 @@ public abstract class HudComponent {
     /**
      * Use this method to render the component.
      */
-    public abstract void render();
+    public abstract void render(GraphicsContext g);
 }
