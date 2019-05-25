@@ -1,3 +1,13 @@
 language: java
+
+sudo: false
+
 jdk:
   - openjdk12
+
+env:
+  global:
+    - CODECOV_TOKEN=d3d98ab1-fccc-4c2c-9709-40527d447957
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
