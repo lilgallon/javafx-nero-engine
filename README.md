@@ -1,6 +1,6 @@
 ![header](https://n3roo.github.io/img/nero-engine-rect.png)
 
-[![travisCI](https://img.shields.io/travis/N3ROO/javafx-nero-engine/master.svg)](https://travis-ci.org/N3ROO/javafx-nero-engine/) [![codecov](https://codecov.io/gh/N3ROO/javafx-nero-engine/branch/master/graph/badge.svg)](https://codecov.io/gh/N3ROO/javafx-nero-engine) [![release](https://img.shields.io/github/release/n3roo/nero-engine.svg)](https://github.com/N3ROO/javafx-nero-engine/releases) [![issues](https://img.shields.io/github/issues/n3roo/javafx-nero-engine.svg)](https://github.com/N3ROO/javafx-nero-engine/issues) [![license](https://img.shields.io/github/license/n3roo/nero-engine.svg)](https://github.com/N3ROO/javafx-nero-engine/blob/master/LICENSE)
+[![travisCI](https://img.shields.io/travis/N3ROO/javafx-nero-engine/master.svg)](https://travis-ci.org/N3ROO/javafx-nero-engine/) [![Maintainability](https://api.codeclimate.com/v1/badges/93fb4cbc9869d1673d87/maintainability)](https://codeclimate.com/github/N3ROO/javafx-nero-engine/maintainability) [![codecov](https://codecov.io/gh/N3ROO/javafx-nero-engine/branch/master/graph/badge.svg)](https://codecov.io/gh/N3ROO/javafx-nero-engine) [![release](https://img.shields.io/github/release/n3roo/nero-engine.svg)](https://github.com/N3ROO/javafx-nero-engine/releases) [![issues](https://img.shields.io/github/issues/n3roo/javafx-nero-engine.svg)](https://github.com/N3ROO/javafx-nero-engine/issues)
 
 An easy to use java 2D game engine powered by JavaFX 12. 🎮
 
