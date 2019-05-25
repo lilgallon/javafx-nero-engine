@@ -13,7 +13,7 @@ import java.util.Stack;
 
 public class Entity {
 
-    // The game object position
+    // The entity position
     protected Position position;
 
     // Rigid body (used for collision)
@@ -28,8 +28,8 @@ public class Entity {
     private Point2D movement;
 
     /**
-     * It creates a game object. All the attributes are initialized as well.
-     * @param position the game object position.
+     * It creates an entity. All the attributes are initialized as well.
+     * @param position the entity position.
      */
     public Entity(Position position){
         this.position = position;
@@ -59,7 +59,7 @@ public class Entity {
     }
 
     /**
-     * It adds a force to the game object.
+     * It adds a force to the entity.
      * @param force the force to apply.
      */
     public void addForce(Force force){
@@ -67,7 +67,7 @@ public class Entity {
     }
 
     /**
-     * It adds a force to the game object.
+     * It adds a force to the entity.
      * @param vector the force vector,
      * @param mode the force mode.
      */
@@ -76,7 +76,7 @@ public class Entity {
     }
 
     /**
-     * It changes the forces applied to this game object.
+     * It changes the forces applied to this entity.
      * @param forces new forces.
      */
     public void setForces(Stack<Force> forces){
@@ -84,14 +84,14 @@ public class Entity {
     }
 
     /**
-     * @return the forces applied to this game object.
+     * @return the forces applied to this entity.
      */
     public Stack<Force> getForces(){
         return forces;
     }
 
     /**
-     * It clears the forces applied to this game object.
+     * It clears the forces applied to this entity.
      */
     public void clearForces(){
         forces = new Stack<>();
@@ -119,7 +119,7 @@ public class Entity {
     }
 
     /**
-     * It changes the game object movement vector.
+     * It changes the entity movement vector.
      * @param movement new movement vector.
      */
     public void setMovement(Point2D movement){
@@ -127,7 +127,7 @@ public class Entity {
     }
 
     /**
-     * It moves the game object (you have to be sure to what you are doing, it does not take in account collisions or
+     * It moves the entity (you have to be sure to what you are doing, it does not take in account collisions or
      * anything).
      * @param dx x movement,
      * @param dy y movement.
@@ -171,7 +171,7 @@ public class Entity {
 
     /**
      * The rigid body is a square. It is used to handle collision between objects.
-     * @return the rigid body of this game object, or null, if this object does not have any rigid body.
+     * @return the rigid body of this entity, or null, if this object does not have any rigid body.
      */
     public RigidBody getRigidBody(){
         return rigidBody;

@@ -12,9 +12,9 @@ import javafx.scene.paint.Color;
 public class Player extends Entity {
 
     /**
-     * It creates a game object. All the attributes are initialized as well.
+     * It creates an entity. All the attributes are initialized as well.
      *
-     * @param position the game object position.
+     * @param position the entity position.
      */
     public Player(Position position) {
         super(position);

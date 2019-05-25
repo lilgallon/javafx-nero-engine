@@ -16,9 +16,9 @@ public class Particle extends Entity {
     protected boolean killed;
 
     /**
-     * It creates a game object. All the attributes are initialized as well.
+     * It creates an entity. All the attributes are initialized as well.
      *
-     * @param position the game object position,
+     * @param position the entity position,
      * @param lifeTime the time before the particle dies.
      */
     public Particle(Position position, long lifeTime) {
@@ -31,11 +31,11 @@ public class Particle extends Entity {
     }
 
     /**
-     * It creates a game object. All the attributes are initialized as well.
+     * It creates an entity. All the attributes are initialized as well.
      * To kill the particle you must use the function "kill()". Otherwise, you have
      * to use the other constructor by indicating the particle lifetime
      *
-     * @param position the game object position.
+     * @param position the entity position.
      */
     public Particle(Position position) {
         super(position);

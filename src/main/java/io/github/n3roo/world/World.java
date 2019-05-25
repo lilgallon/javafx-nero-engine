@@ -12,10 +12,16 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class World {
 
+    // Queue containing all the hud components.
     private static Queue<HudComponent> hudComponents = new ConcurrentLinkedQueue<>();
 
+    // Queue containing all the game entities.
     private static Queue<Entity> entities = new ConcurrentLinkedQueue<>();
 
+    /**
+     * It updates all the HUDs and then, it updates all the entities.
+     * @param delta time since last update.
+     */
     public static void update(double delta){
         for(HudComponent hudComponent : hudComponents){
             hudComponent.update(delta);
@@ -28,11 +34,15 @@ public class World {
             // Remove the particle if it was killed
             if(entity instanceof Particle){
                 Particle particle = (Particle) entity;
-                if(particle.isKilled()) removeGameObject(particle);
+                if(particle.isKilled()) removeEntity(particle);
             }
         }
     }
 
+    /**
+     * It clears the screen, draws all the HUDs and then, it draws all the entities.
+     * @param g the thing used to draw.
+     */
     public static void render(GraphicsContext g){
         g.setFill(Color.WHITE);
         g.fillRect(0, 0, g.getCanvas().getWidth(), g.getCanvas().getHeight());
@@ -70,25 +80,25 @@ public class World {
     }
 
     /**
-     * Used to add a game object.
-     * @param entity game object to add.
+     * Used to add an entity.
+     * @param entity entity to add.
      */
-    public static void addGameObject(Entity entity){
+    public static void addEntity(Entity entity){
         entities.offer(entity);
     }
 
     /**
-     * Used to remove a game object.
-     * @param entity game object to add.
+     * Used to remove an entity.
+     * @param entity entity to add.
      */
-    public static void removeGameObject(Entity entity){
+    public static void removeEntity(Entity entity){
         entities.remove(entity);
     }
 
     /**
-     * Used to remove all the game objects.
+     * Used to remove all the entities.
      */
-    public static void removeAllGameObjects(){
+    public static void removeAllEntities(){
         entities.clear();
     }
 

@@ -22,6 +22,6 @@ public class Main extends Application {
 //                    "", -1, -1, "", "");
 
         World.addHudComponent(new TextHud("Nero engine", new Position(2, 10)));
-        World.addGameObject(new Player(new Position(100, 100)));
+        World.addEntity(new Player(new Position(100, 100)));
     }
 }
