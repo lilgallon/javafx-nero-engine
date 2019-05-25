@@ -31,6 +31,10 @@ class PositionTest {
         // ... and both at the same time !
         p.x --; p.y --;
         assertEquals(new Position(2, -6), p);
+
+        assertNotEquals(new Position(-1, -6), p);
+        assertNotEquals(new Position(-2, -5), p);
+        assertNotEquals(new Position(-1, -1), p);
     }
 
     @Test

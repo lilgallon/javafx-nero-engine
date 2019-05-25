@@ -26,5 +26,8 @@ class RigidBodyTest {
         RigidBody rigidBody = new RigidBody(hitbox, 2);
 
         assertEquals(new RigidBody(hitbox, 2), rigidBody);
+
+        assertNotEquals(new RigidBody(hitbox, -1), rigidBody);
+        assertNotEquals(new RigidBody(new Polygon(1, 2), -1), rigidBody);
     }
 }
