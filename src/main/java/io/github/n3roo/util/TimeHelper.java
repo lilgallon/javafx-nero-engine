@@ -8,6 +8,11 @@ public class TimeHelper {
     // used to stop the timer
     private boolean stopped;
 
+    // used to pause the timer
+    private boolean paused;
+
+    private long elapsedBeforePause = 0L;
+
     /**
      * It creates a time helper. Stopped by default.
      */
@@ -32,10 +37,27 @@ public class TimeHelper {
     }
 
     /**
+     * It pauses the timer.
+     */
+    public void pause(){
+        paused = true;
+        elapsedBeforePause = getCurrentMS() - lastMS;
+    }
+
+    /**
+     * It resumes the timer.
+     */
+    public void resume(){
+        paused = false;
+        lastMS = getCurrentMS() - elapsedBeforePause;
+    }
+
+    /**
      * It resets the timer by saving last ms with the current one.
      */
     public void reset(){
-        this.lastMS = getCurrentMS();
+        lastMS = getCurrentMS();
+        elapsedBeforePause = 0L;
     }
 
     /**
@@ -46,14 +68,22 @@ public class TimeHelper {
     }
 
     /**
+     * The value has a margin of error of 20 ms.
      * @param delay the delay in milliseconds.
      * @return true if the delay has been reached and the timer is not stopped.
      */
     public boolean isDelayComplete(long delay) {
-        if(stopped) return false;
-        if(System.nanoTime() / 1000000L - lastMS >= delay) {
-            return true;
-        }else return delay <= 0;
+        return timeElapsed() >= delay;
+    }
+
+    /**
+     * The value has a margin of error of 20 ms.
+     * @return the time elapsed in milliseconds (it takes in account if it is stopped or paused).
+     */
+    public long timeElapsed(){
+        if(paused) return elapsedBeforePause;
+        if(stopped) return 0L;
+        return getCurrentMS() - lastMS;
     }
 
     /**
