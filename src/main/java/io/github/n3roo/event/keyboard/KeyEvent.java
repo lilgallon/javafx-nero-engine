@@ -19,6 +19,10 @@ public class KeyEvent {
     // Queue that stores all the key that were typed in order
     private static Queue<String> keysTyped = new LinkedList<>();
 
+    /**
+     * It initializes all the events handlers of the specified scene.
+     * @param scene the scene where the keyboard events are fired.
+     */
     public static void init(Scene scene){
         // This event is fired whenever any key press occurs
         // This is mostly used to obtain raw key presses

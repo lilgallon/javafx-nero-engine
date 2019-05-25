@@ -13,6 +13,10 @@ public class NeroEngine {
     // Lo4j2 logger: its properties are found in "log4j2.properties" in resources/ folder.
     private static final Logger LOGGER = LogManager.getLogger(NeroEngine.class.getName());
 
+    /**
+     * It initializes the engine on the specified stage.
+     * @param stage stage where the engine should be working.
+     */
     public static void init(Stage stage){
         // Data
         String windowName = "Nero engine 0.1";

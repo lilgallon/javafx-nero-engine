@@ -8,8 +8,14 @@ import java.util.Stack;
 
 public class Physics {
 
+    // World friction
     public static double friction = 0.9;
 
+    /**
+     * It applies the forces of the specified entity, and handles the collision. At the end of this function, the entity
+     * moved to the right place, and all the forces were updated.
+     * @param entity the entity that needs to be updated.
+     */
     public static void handleForces(Entity entity){
         Point2D movement = entity.getMovement();
 
@@ -37,7 +43,6 @@ public class Physics {
             }
         }
 
-
         // Then, we can move
         constantMovement = constantMovement.add(movement);
         handleCollisionsAndMove(entity, constantMovement);
@@ -50,8 +55,18 @@ public class Physics {
         entity.setForces(forces);
     }
 
+    /**
+     * We have the entity, and its movement vector, and we need to move it according to its environment. We will handle
+     * collisions and move the entity in this function.
+     * @param entity the entity to move,
+     * @param movement the movement to apply.
+     */
     private static void handleCollisionsAndMove(Entity entity, Point2D movement){
-        // TODO: handle collision
-        entity.move(movement.getX(), movement.getY());
+        if(entity.getRigidBody() == null){
+            // The entity does not have a rigid body, so we don't need to handle collisions.
+            entity.move(movement.getX(), movement.getY());
+        }else{
+            // TODO: handle collision
+        }
     }
 }

@@ -10,8 +10,13 @@ import java.util.List;
 
 public class EventManager {
 
+    // The list containing all the closing listeners.
     private static List<OnEngineClosing> listeners = new ArrayList<>();
 
+    /**
+     * It initialize all the events handlers on the stage.
+     * @param stage the stage where the event are fired.
+     */
     public static void init(Stage stage){
         KeyEvent.init(stage.getScene());
         MouseEvent.init(stage.getScene());
@@ -24,6 +29,10 @@ public class EventManager {
         stage.setOnCloseRequest(windowEvent -> listeners.forEach(OnEngineClosing::performAction));
     }
 
+    /**
+     * It is used to add a listener that will be called when the engine shuts down.
+     * @param listener the listener.
+     */
     public static void addOnEngineClosingListener(OnEngineClosing listener){
         listeners.add(listener);
     }

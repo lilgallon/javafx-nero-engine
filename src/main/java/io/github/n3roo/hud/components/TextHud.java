@@ -8,10 +8,19 @@ import javafx.scene.text.Font;
 
 public class TextHud extends HudComponent {
 
+    // The text font
     private Font font;
+
+    // The text color
     private Color color;
+
+    // The text content
     private String text;
+
+    // The text position
     private Position position;
+
+    // The text max width
     private double maxWidth;
 
     /**

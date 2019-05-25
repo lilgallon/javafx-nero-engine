@@ -12,16 +12,17 @@ public class GameLoop {
     // Lo4j2 logger: its properties are found in "log4j2.properties" in resources/ folder.
     private static final Logger LOGGER = LogManager.getLogger(NeroEngine.class.getName());
 
+    // Used for the game loop
     private static AnimationTimer gameThread;
 
     // Last tick
     private static long past = -1;
 
     /**
-     * TODO
-     * @param stage
-     * @param graphicsContext
-     * @param aimedFps
+     * It starts the game loop on the specified stage with the specified FPS.
+     * @param stage stage in which the game will be played,
+     * @param graphicsContext the thing to draw on the canvas,
+     * @param aimedFps the desired amount of frames per seconds.
      */
     public static void start(Stage stage, GraphicsContext graphicsContext, int aimedFps){
         gameThread = new AnimationTimer() {
@@ -38,10 +39,16 @@ public class GameLoop {
         gameThread.start();
     }
 
+    /**
+     * It starts the game loop
+     */
     public void start(){
         gameThread.start();
     }
 
+    /**
+     * It stops the game loop
+     */
     public void stop(){
         gameThread.stop();
     }

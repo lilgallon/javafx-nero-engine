@@ -1,5 +1,9 @@
 package io.github.n3roo.event;
 
 public interface OnEngineClosing{
-    public void performAction();
+
+    /**
+     * This code will be called when the engine shuts down.
+     */
+    void performAction();
 }

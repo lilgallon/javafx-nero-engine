@@ -5,6 +5,10 @@ import javafx.scene.input.MouseDragEvent;
 
 public class MouseEvent {
 
+    /**
+     * It initializes all the mouse event of the specified scene.
+     * @param scene the scene where the mouse events are fired.
+     */
     public static void init(Scene scene){
         // This event is fired whenever the mouse is moved (the scene must be focused)
         scene.setOnMouseMoved(event -> Mouse.updatePosition(event.getSceneX(), event.getSceneY()));
