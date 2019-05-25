@@ -14,7 +14,8 @@ before_script:
   - ./cc-test-reporter before-build
 
 after_script:
-  - ./cc-test-reporter format-coverage -d -t jacoco ./target/site/jacoco/jacoco.xml
+  - JACOCO_SOURCE_PATH=src/main/java
+  - ./cc-test-reporter format-coverage target/site/jacoco/jacoco.xml --input-type jacoco -d
   - ./cc-test-reporter upload-coverage -d
 
 after_success:
