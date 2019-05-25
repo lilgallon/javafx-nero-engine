@@ -47,4 +47,11 @@ public class Force {
     public Mode getMode() {
         return mode;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof Force)) return false;
+        Force f = (Force) o;
+        return f.getMode() == mode && f.getVector() == vector;
+    }
 }
