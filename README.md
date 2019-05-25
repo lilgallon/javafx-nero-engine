@@ -1,7 +1,8 @@
 # Nero engine
 ![header](https://n3roo.github.io/img/nero-engine-rect.png)
 
-![release](https://img.shields.io/github/release/n3roo/nero-engine.svg) ![tag](https://img.shields.io/github/tag/n3roo/nero-engine.svg) ![issues](https://img.shields.io/github/issues/n3roo/nero-engine.svg) ![license](https://img.shields.io/github/license/n3roo/nero-engine.svg)
+![travisCI](https://img.shields.io/travis/N3ROO/javafx-nero-engine/master.svg) [![codecov](https://codecov.io/gh/N3ROO/javafx-nero-engine/branch/master/graph/badge.svg)](https://codecov.io/gh/N3ROO/javafx-nero-engine)
+![release](https://img.shields.io/github/release/n3roo/nero-engine.svg) ![issues](https://img.shields.io/github/issues/n3roo/nero-engine.svg) ![license](https://img.shields.io/github/license/n3roo/nero-engine.svg)
 
 A java 2D game engine powered by JavaFX 12.
 
