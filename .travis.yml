@@ -8,6 +8,15 @@ jdk:
 env:
   global:
     - CODECOV_TOKEN=d3d98ab1-fccc-4c2c-9709-40527d447957
+    - CC_TEST_REPORTER_ID=c17f2060a70c0a31065571d546e14eb1a2946f2103383720d0aa7d7725d81ad5
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
