@@ -1,6 +1,6 @@
 package io.github.n3roo.engine;
 
-import io.github.n3roo.events.EventManager;
+import io.github.n3roo.event.EventManager;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;

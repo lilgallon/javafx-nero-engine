@@ -3,7 +3,7 @@ package io.github.n3roo.discord;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
-import io.github.n3roo.events.EventManager;
+import io.github.n3roo.event.EventManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,7 +50,7 @@ public class Discord {
         }, "NeroEngine-DiscordRPC-Callback-Handler");
         callbackHandler.start();
 
-        LOGGER.info("DISCORD: Creating shutdown events");
+        LOGGER.info("DISCORD: Creating shutdown event");
         EventManager.addOnEngineClosingListener(callbackHandler::interrupt);
         EventManager.addOnEngineClosingListener(() -> lib.Discord_Shutdown());
 
@@ -154,7 +154,7 @@ public class Discord {
         return presence;
     }
 
-    // Override these methods to handle events
+    // Override these methods to handle event
 
     protected void handleReady(){ LOGGER.info("DISCORD: ready"); }
     protected void handleError(){ LOGGER.info("DISCORD: error"); }

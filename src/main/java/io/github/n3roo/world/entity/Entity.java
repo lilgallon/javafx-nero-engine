@@ -1,4 +1,4 @@
-package io.github.n3roo.world;
+package io.github.n3roo.world.entity;
 
 import javafx.geometry.Point2D;
 import io.github.n3roo.graphics.Animation;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-public class GameObject {
+public class Entity {
 
     // The game object position
     protected Position position;
@@ -31,7 +31,7 @@ public class GameObject {
      * It creates a game object. All the attributes are initialized as well.
      * @param position the game object position.
      */
-    public GameObject(Position position){
+    public Entity(Position position){
         this.position = position;
         this.rigidBody = null;
         this.animations = new HashMap<>();

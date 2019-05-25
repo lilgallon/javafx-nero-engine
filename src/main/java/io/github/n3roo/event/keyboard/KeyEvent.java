@@ -1,4 +1,4 @@
-package io.github.n3roo.events.keyboard;
+package io.github.n3roo.event.keyboard;
 
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;

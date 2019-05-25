@@ -1,15 +1,15 @@
 package sample.entities;
 
 import javafx.geometry.Point2D;
-import io.github.n3roo.events.keyboard.KeyEvent;
+import io.github.n3roo.event.keyboard.KeyEvent;
 import io.github.n3roo.math.Position;
 import io.github.n3roo.math.physics.Force;
-import io.github.n3roo.world.GameObject;
+import io.github.n3roo.world.entity.Entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
-public class Player extends GameObject {
+public class Player extends Entity {
 
     /**
      * It creates a game object. All the attributes are initialized as well.

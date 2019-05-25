@@ -1,4 +1,4 @@
-package io.github.n3roo.events.mouse;
+package io.github.n3roo.event.mouse;
 
 import javafx.scene.Scene;
 import javafx.scene.input.MouseDragEvent;

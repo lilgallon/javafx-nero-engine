@@ -1,4 +1,4 @@
-package io.github.n3roo.events.mouse;
+package io.github.n3roo.event.mouse;
 
 public class Mouse {
 

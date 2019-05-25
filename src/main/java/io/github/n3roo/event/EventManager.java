@@ -1,7 +1,7 @@
-package io.github.n3roo.events;
+package io.github.n3roo.event;
 
-import io.github.n3roo.events.keyboard.KeyEvent;
-import io.github.n3roo.events.mouse.MouseEvent;
+import io.github.n3roo.event.keyboard.KeyEvent;
+import io.github.n3roo.event.mouse.MouseEvent;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
@@ -16,7 +16,7 @@ public class EventManager {
         KeyEvent.init(stage.getScene());
         MouseEvent.init(stage.getScene());
 
-        // Close events
+        // Close event
         addOnEngineClosingListener(() -> {
             Platform.exit();
             System.exit(0);
