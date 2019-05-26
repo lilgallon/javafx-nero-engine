@@ -14,6 +14,13 @@ public class Mouse {
     // true whenever the mouse is being pressed
     private static boolean pressed = false;
 
+    public static void reset(){
+        x = 0;
+        y = 0;
+        in = false;
+        pressed = false;
+    }
+
     /**
      * It updates the mouse position by overriding its current position.
      * @param x the new x position on the scene,

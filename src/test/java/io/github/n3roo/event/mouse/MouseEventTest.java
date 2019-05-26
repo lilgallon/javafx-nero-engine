@@ -2,7 +2,6 @@ package io.github.n3roo.event.mouse;
 
 import javafx.event.Event;
 import javafx.event.EventType;
-import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -19,10 +18,12 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class MouseEventTest {
 
-    // window position in the screen
-    private int x;
-    private int y;
     private Stage stage;
+
+    @BeforeAll
+    static void init() {
+        Mouse.reset();
+    }
 
     @Start
     public void start(Stage stage) {
@@ -33,11 +34,6 @@ class MouseEventTest {
         root.getChildren().add(canvas);
         stage.show();
         stage.requestFocus();
-
-        Bounds bounds = root.getBoundsInLocal();
-        Bounds screenBounds = root.localToScreen(bounds);
-        x = (int) screenBounds.getMinX();
-        y = (int) screenBounds.getMinY();
 
         this.stage = stage;
 

@@ -1,10 +1,16 @@
 package io.github.n3roo.event.mouse;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MouseTest {
+
+    @BeforeAll
+    static void init() {
+        Mouse.reset();
+    }
 
     @Test
     void isIn() {
