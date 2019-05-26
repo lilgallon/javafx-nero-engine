@@ -181,4 +181,17 @@ public class Entity {
     public RigidBody getRigidBody(){
         return rigidBody;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof Entity)) return false;
+        Entity e = (Entity) o;
+        return (e.getPosition().equals(position) &&
+                e.getRigidBody() == rigidBody &&
+                e.getForces().equals(forces) &&
+                e.getMovement().equals(movement) &&
+                e.getPosition().equals(position) &&
+                e.getAnimations().equals(animations) &&
+                e.getCurrentAnimation() == currentAnimation);
+    }
 }

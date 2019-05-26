@@ -80,6 +80,13 @@ public class World {
     }
 
     /**
+     * @return all the hud components.
+     */
+    public static Queue<HudComponent> getHudComponents(){
+        return hudComponents;
+    }
+
+    /**
      * Used to add an entity.
      * @param entity entity to add.
      */
@@ -102,4 +109,10 @@ public class World {
         entities.clear();
     }
 
+    /**
+     * @return all the entities.
+     */
+    public static Queue<Entity> getEntities(){
+        return entities;
+    }
 }

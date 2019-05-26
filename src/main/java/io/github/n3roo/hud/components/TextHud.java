@@ -147,4 +147,15 @@ public class TextHud extends HudComponent {
     public double getMaxWidth(){
         return maxWidth;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof TextHud)) return false;
+        TextHud t = (TextHud) o;
+        return (t.getFont().equals(font) &&
+                t.getColor().equals(color) &&
+                t.getText().equals(text) &&
+                t.getPosition().equals(position) &&
+                t.getMaxWidth() == maxWidth);
+    }
 }
