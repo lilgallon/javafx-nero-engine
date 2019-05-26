@@ -11,6 +11,8 @@ class MouseTest {
         assertFalse(Mouse.isIn());
         Mouse.isIn(true);
         assertTrue(Mouse.isIn());
+        Mouse.isIn(false);
+        assertFalse(Mouse.isIn());
     }
 
     @Test

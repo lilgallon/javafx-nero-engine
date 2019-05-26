@@ -29,7 +29,7 @@ public class Mouse {
      * @param isIn true means that the mouse is in the scene.
      */
     static void isIn(boolean isIn){
-        Mouse.in = true;
+        Mouse.in = isIn;
     }
 
     /**
