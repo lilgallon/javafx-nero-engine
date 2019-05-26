@@ -9,5 +9,10 @@ env:
   global:
     - CODECOV_TOKEN=d3d98ab1-fccc-4c2c-9709-40527d447957
 
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
