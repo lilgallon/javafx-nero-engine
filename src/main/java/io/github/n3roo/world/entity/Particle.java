@@ -45,14 +45,8 @@ public class Particle extends Entity {
 
     /**
      * Update values in this function.
-     * You need to call the super function to update the time lived.
      */
-    public void update(double delta){
-        if(timeLived != null && !killed){
-            killed = timeLived.isDelayComplete(lifeTime);
-            timeLived.stop();
-        }
-    }
+    public void update(double delta){ }
 
     /**
      * Render anything in this function.
@@ -70,9 +64,14 @@ public class Particle extends Entity {
     }
 
     /**
-     * @return true if the particle is going to get killed
+     * @return true if the particle is killed
      */
     public boolean isKilled(){
+        if(timeLived != null) {
+            if (!killed && timeLived.isDelayComplete(lifeTime)) {
+                killed = true;
+            }
+        }
         return killed;
     }
 }
