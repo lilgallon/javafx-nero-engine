@@ -33,7 +33,17 @@ public class KeyEvent {
 
         // This event is fired when a key is pressed that can be converted into a unicode character
         // This is mostly used to find characters that are typed
-        scene.setOnKeyTyped(event -> { if(recordKeyTyped) keysTyped.offer(event.getCharacter()); });
+        scene.setOnKeyTyped(event -> {
+            if(recordKeyTyped) {
+                if(Character.isLetter(event.getCharacter().charAt(0))
+                        && event.getCharacter().length() == 1
+                        && !(isKeyDown(KeyCode.CAPS) || isKeyDown(KeyCode.SHIFT))){
+                    keysTyped.add(event.getCharacter().toLowerCase());
+                } else {
+                    keysTyped.add(event.getCharacter());
+                }
+            }
+        });
     }
 
     /**
