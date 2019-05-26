@@ -42,6 +42,6 @@ public class RigidBody {
     public boolean equals(Object o){
         if(!(o instanceof RigidBody)) return false;
         RigidBody rb = (RigidBody) o;
-        return rb.getHitbox() == hitbox && rb.getMass() == mass;
+        return rb.getHitbox().equals(hitbox) && rb.getMass() == mass;
     }
 }

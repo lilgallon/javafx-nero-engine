@@ -20,7 +20,7 @@ public class Entity {
     protected RigidBody rigidBody;
 
     // Animations
-    protected Map<Long, Animation> animations;
+    protected HashMap<Long, Animation> animations;
     protected long currentAnimation;
 
     // Forces
@@ -35,7 +35,7 @@ public class Entity {
         this.position = position;
         this.rigidBody = null;
         this.animations = new HashMap<>();
-        this.currentAnimation = -1;
+        this.currentAnimation = 0;
         this.forces = new Stack<>();
         this.movement = new Point2D(0d, 0d);
     }
@@ -64,15 +64,6 @@ public class Entity {
      */
     public void addForce(Force force){
         forces.push(force);
-    }
-
-    /**
-     * It adds a force to the entity.
-     * @param vector the force vector,
-     * @param mode the force mode.
-     */
-    public void addForce(Point2D vector, Force.Mode mode){
-        addForce(new Force(vector, mode));
     }
 
     /**
@@ -141,7 +132,7 @@ public class Entity {
      * @param x new x position,
      * @param y new y position.
      */
-    public void setPosition(float x, float y){
+    public void setPosition(double x, double y){
         this.position.x = x;
         this.position.y = y;
     }
@@ -155,11 +146,25 @@ public class Entity {
     }
 
     /**
+     * @return the current animation index.
+     */
+    public long getCurrentAnimation(){
+        return currentAnimation;
+    }
+
+    /**
      * It changes the animations of this object.
      * @param animations new animations.
      */
     public void setAnimations(HashMap<Long, Animation> animations){
         this.animations = animations;
+    }
+
+    /**
+     * @return animations of this object.
+     */
+    public HashMap<Long, Animation> getAnimations(){
+        return animations;
     }
 
     /**

@@ -52,6 +52,6 @@ public class Force {
     public boolean equals(Object o){
         if(!(o instanceof Force)) return false;
         Force f = (Force) o;
-        return f.getMode() == mode && f.getVector() == vector;
+        return f.getMode().equals(mode) && f.getVector().equals(vector);
     }
 }

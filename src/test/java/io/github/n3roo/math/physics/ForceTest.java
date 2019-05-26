@@ -24,7 +24,8 @@ class ForceTest {
     void equals(){
         Point2D vector = new Point2D(1, -1.3f);
         Force force = new Force(vector, Force.Mode.Persistent);
-        assertEquals(new Force(vector, Force.Mode.Persistent), force);
+      //  assertEquals(new Force(vector, Force.Mode.Persistent), force);
+        assertEquals(new Force(new Point2D(1, -1.3f), Force.Mode.Persistent), force);
         assertNotEquals(new Force(vector, Force.Mode.Velocity), force);
         assertNotEquals(new Force(new Point2D(1, 2), Force.Mode.Persistent), force);
         assertNotEquals(new Force(new Point2D(1, 2), Force.Mode.Impulse), force);
