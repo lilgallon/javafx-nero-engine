@@ -78,7 +78,7 @@ public class Animation {
      */
     public void resetAnimation(){
         currentFrame = 0;
-        lastFrameTime = 0;
+        lastFrameTime = System.nanoTime();
     }
 
     /**
