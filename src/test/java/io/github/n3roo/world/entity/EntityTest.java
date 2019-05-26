@@ -8,6 +8,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,12 +24,16 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(ApplicationExtension.class)
 class EntityTest {
 
+    GraphicsContext g;
+
     @Start
     public void start(Stage stage) throws Exception {
         Group root = new Group();
         stage.setScene(new Scene(root));
         stage.setTitle("test");
-        root.getChildren().add(new Canvas(10, 10));
+        Canvas canvas = new Canvas(10, 10);
+        g = canvas.getGraphicsContext2D();
+        root.getChildren().add(canvas);
         stage.show();
     }
 
@@ -135,5 +140,12 @@ class EntityTest {
     void getRigidBody() {
         Entity entity = new Entity(new Position());
         assertNull(entity.getRigidBody());
+    }
+
+    @Test
+    void updateAndRender(){
+        Entity entity = new Entity(new Position());
+        assertDoesNotThrow(() -> entity.update(1d));
+        assertDoesNotThrow(() -> entity.render(g));
     }
 }
