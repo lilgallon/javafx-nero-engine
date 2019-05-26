@@ -63,6 +63,8 @@ class KeyEventTest {
         fireEvent(javafx.scene.input.KeyEvent.KEY_TYPED, KeyCode.L);
         fireEvent(javafx.scene.input.KeyEvent.KEY_TYPED, KeyCode.L);
         fireEvent(javafx.scene.input.KeyEvent.KEY_TYPED, KeyCode.O);
+        fireEvent(javafx.scene.input.KeyEvent.KEY_TYPED, KeyCode.EXCLAMATION_MARK);
+        fireEvent(javafx.scene.input.KeyEvent.KEY_TYPED, KeyCode.MINUS);
         KeyEvent.stopKeyTypedRecord();
 
         assertEquals("h", KeyEvent.nextKeyTyped());
@@ -70,6 +72,11 @@ class KeyEventTest {
         assertEquals("l", KeyEvent.nextKeyTyped());
         assertEquals("l", KeyEvent.nextKeyTyped());
         assertEquals("o", KeyEvent.nextKeyTyped());
+        assertEquals("ȅ", KeyEvent.nextKeyTyped()); // yes, JavaFX KeyCode mapping sucks
+
+        assertEquals("-", KeyEvent.peekKeyTyped());
+        KeyEvent.clearKeyTyped();
+        assertNull(KeyEvent.nextKeyTyped());
 
         // "Specials" characters are broken with javaFX key code. For example: the code of ! is 517, whereas it should
         // be 33.
