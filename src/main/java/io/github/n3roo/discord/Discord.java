@@ -16,10 +16,13 @@ public class Discord {
     private static Discord INSTANCE = null;
 
     // The discordRPC lib
-    protected DiscordRPC lib = DiscordRPC.INSTANCE;
+    private DiscordRPC lib = DiscordRPC.INSTANCE;
 
     // The discordRPC information
-    protected DiscordRichPresence presence;
+    private DiscordRichPresence presence;
+
+    // The thread updating presence
+    private Thread callbackHandler;
 
     /**
      * It creates all the needed handlers.
@@ -40,7 +43,7 @@ public class Discord {
         lib.Discord_Initialize(appId, handlers, true, "");
 
         LOGGER.info("DISCORD: Creating a callback handler thread");
-        Thread callbackHandler = new Thread(() -> {
+        callbackHandler = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 lib.Discord_RunCallbacks();
                 try {
@@ -69,6 +72,15 @@ public class Discord {
 
         INSTANCE = new Discord(appId);
         return INSTANCE;
+    }
+
+    /**
+     * By default, destroy is called when the game closes. If this function is called, you can't use Discord anymore.
+     */
+    public void destroy(){
+        if(callbackHandler != null)
+            callbackHandler.interrupt();
+        lib.Discord_Shutdown();
     }
 
     /**
