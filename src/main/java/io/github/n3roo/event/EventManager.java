@@ -34,7 +34,7 @@ public class EventManager {
      * @param listener the listener.
      */
     public static void addOnEngineClosingListener(OnEngineClosing listener){
-        listeners.add(listener);
+        listeners.add(0, listener);
     }
 }
 

@@ -100,7 +100,7 @@
             <version>2.0.2</version>
         </dependency>
 
-        <!-- Tests: JUnit -->
+        <!-- Tests: -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
