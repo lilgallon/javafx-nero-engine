@@ -56,6 +56,17 @@ Regarding code coverage, write `mvn clean test jacoco:report`. Then, from the me
 Analyze > Show Coverage data. In the new window press the + button and select target/jacoco.exec file.
 The test coverage results will appear in the editor Coverage tab.
 
+### 5.3 Execution
+
+**Intellij tools:** Go in `src/demo/java/sample/main/Main` and click on "run Main.main()".
+
+**Maven tools:**
+Type `mvn javafx:run`
+
+
+If there is an error saying `Error: Could not find or load main class sample.main.Main`, it is
+probably because you typed `mvn clean`. To fix it, go in IntelliJ, click on Build and then, Rebuild project.
+
 ## 4. Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details.
