@@ -9,7 +9,7 @@ import java.util.Stack;
 public class Physics {
 
     // World friction
-    public static double friction = 0.9;
+    public static double friction = 0.95;
 
     /**
      * It applies the forces of the specified entity, and handles the collision. At the end of this function, the entity
@@ -19,7 +19,12 @@ public class Physics {
     public static void handleForces(Entity entity){
         Point2D movement = entity.getMovement();
 
-        movement.multiply(friction);
+        movement = movement.multiply(friction);
+
+        double x, y;
+        x = (movement.getX() < 0.001) ? 0 : movement.getX();
+        y = (movement.getY() < 0.001) ? 0 : movement.getY();
+        movement = new Point2D(x, y);
 
         // This vector stores the effective movement. This way, Velocity force will be applied only once, and there will
         // not be any remaining residual velocity forces.
