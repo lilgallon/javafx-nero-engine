@@ -42,6 +42,13 @@ public class Position {
         return this;
     }
 
+    /**
+     * @return a copy of the current object.
+     */
+    public Position copy(){
+        return new Position(x, y);
+    }
+
     @Override
     public boolean equals(Object o){
         if(!(o instanceof Position)) return false;
