@@ -8,7 +8,6 @@ import io.github.n3roo.math.physics.Force;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 public class Entity {
