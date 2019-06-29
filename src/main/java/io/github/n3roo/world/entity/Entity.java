@@ -124,6 +124,7 @@ public class Entity {
      */
     public void move(double dx, double dy){
         this.position.move(dx, dy);
+        if(this.getBody() != null) this.getBody().getHitbox().setPosition(position.copy());
     }
 
     /**
@@ -134,6 +135,7 @@ public class Entity {
     public void setPosition(double x, double y){
         this.position.x = x;
         this.position.y = y;
+        if(this.getBody() != null) this.getBody().getHitbox().setPosition(position.copy());
     }
 
     /**
