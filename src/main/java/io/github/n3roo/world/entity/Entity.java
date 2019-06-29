@@ -3,7 +3,7 @@ package io.github.n3roo.world.entity;
 import javafx.geometry.Point2D;
 import io.github.n3roo.graphics.Animation;
 import io.github.n3roo.math.Position;
-import io.github.n3roo.math.RigidBody;
+import io.github.n3roo.math.body.Body;
 import io.github.n3roo.math.physics.Force;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -16,7 +16,7 @@ public class Entity {
     protected Position position;
 
     // Rigid body (used for collision)
-    protected RigidBody rigidBody;
+    protected Body body;
 
     // Animations
     protected HashMap<Long, Animation> animations;
@@ -32,7 +32,7 @@ public class Entity {
      */
     public Entity(Position position){
         this.position = position;
-        this.rigidBody = null;
+        this.body = null;
         this.animations = new HashMap<>();
         this.currentAnimation = 0;
         this.forces = new Stack<>();
@@ -177,8 +177,8 @@ public class Entity {
      * The rigid body is a square. It is used to handle collision between objects.
      * @return the rigid body of this entity, or null, if this object does not have any rigid body.
      */
-    public RigidBody getRigidBody(){
-        return rigidBody;
+    public Body getBody(){
+        return body;
     }
 
     @Override
@@ -186,7 +186,7 @@ public class Entity {
         if(!(o instanceof Entity)) return false;
         Entity e = (Entity) o;
         return (e.getPosition().equals(position) &&
-                e.getRigidBody() == rigidBody &&
+                e.getBody() == body &&
                 e.getForces().equals(forces) &&
                 e.getMovement().equals(movement) &&
                 e.getPosition().equals(position) &&

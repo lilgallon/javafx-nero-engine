@@ -67,7 +67,7 @@ public class Physics {
      * @param movement the movement to apply.
      */
     private static void handleCollisionsAndMove(Entity entity, Point2D movement){
-        if(entity.getRigidBody() == null){
+        if(entity.getBody() == null){
             // The entity does not have a rigid body, so we don't need to handle collisions.
             entity.move(movement.getX(), movement.getY());
         }else{

@@ -43,6 +43,17 @@ public class Position {
     }
 
     /**
+     * Moves the position with the given deltas.
+     * @param position x;y deltas,
+     * @return this instance.
+     */
+    public Position move(Position position){
+        this.x += position.x;
+        this.y += position.y;
+        return this;
+    }
+
+    /**
      * @return a copy of the current object.
      */
     public Position copy(){

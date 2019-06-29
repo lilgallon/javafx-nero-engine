@@ -3,7 +3,6 @@ package io.github.n3roo.world.entity;
 import io.github.n3roo.graphics.Animation;
 import io.github.n3roo.math.Position;
 import io.github.n3roo.math.physics.Force;
-import javafx.application.Application;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -139,7 +138,7 @@ class EntityTest {
     @Test
     void getRigidBody() {
         Entity entity = new Entity(new Position());
-        assertNull(entity.getRigidBody());
+        assertNull(entity.getBody());
     }
 
     @Test

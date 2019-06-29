@@ -1,8 +1,8 @@
-package io.github.n3roo.math;
+package io.github.n3roo.math.body;
 
 import javafx.scene.shape.Polygon;
 
-public class RigidBody {
+public class Body {
 
     /**
      * Shape of this rigid body.
@@ -19,7 +19,7 @@ public class RigidBody {
      * @param hitbox the collision polygon,
      * @param mass the mass of the rigid body. (value < 0 means an infinite mass)
      */
-    public RigidBody(Polygon hitbox, double mass){
+    public Body(Polygon hitbox, double mass){
         this.hitbox = hitbox;
         this.mass = mass;
     }
@@ -40,8 +40,8 @@ public class RigidBody {
 
     @Override
     public boolean equals(Object o){
-        if(!(o instanceof RigidBody)) return false;
-        RigidBody rb = (RigidBody) o;
+        if(!(o instanceof Body)) return false;
+        Body rb = (Body) o;
         return rb.getHitbox().equals(hitbox) && rb.getMass() == mass;
     }
 }
