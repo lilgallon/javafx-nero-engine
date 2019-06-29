@@ -81,12 +81,24 @@ public class Physics {
                 if(target.getBody() == null) continue;
 
                 CollisionResult collisionResult = null;
+
+                // TODO: aabb algorithm between rectangles & circles
+
+                // aabb rectangle - rectangle
+                // ...
+
+                // aabb rectangle - circle
+                // ...
+
                 if(target.getBody().getHitbox() instanceof Polygon && entity.getBody().getHitbox() instanceof Polygon) {
                     collisionResult = CollisionAlgorithms.polygonPolygonSAT(
                             (Polygon) entity.getBody().getHitbox(),
                             (Polygon) target.getBody().getHitbox()
                     );
                 }
+
+                // ??? polygon - circle
+                // ...
 
                 if(collisionResult != null) {
                     if(collisionResult.overlap){
