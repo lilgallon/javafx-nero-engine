@@ -22,8 +22,8 @@ public class Physics {
         movement = movement.multiply(friction);
 
         double x, y;
-        x = (movement.getX() < 0.001) ? 0 : movement.getX();
-        y = (movement.getY() < 0.001) ? 0 : movement.getY();
+        x = (movement.getX() < 0.001 && movement.getX() > - 0.001) ? 0 : movement.getX();
+        y = (movement.getY() < 0.001  && movement.getY() > - 0.001) ? 0 : movement.getY();
         movement = new Point2D(x, y);
 
         // This vector stores the effective movement. This way, Velocity force will be applied only once, and there will
@@ -71,6 +71,7 @@ public class Physics {
             // The entity does not have a rigid body, so we don't need to handle collisions.
             entity.move(movement.getX(), movement.getY());
         }else{
+            entity.move(movement.getX(), movement.getY());
             // TODO: handle collision
         }
     }
