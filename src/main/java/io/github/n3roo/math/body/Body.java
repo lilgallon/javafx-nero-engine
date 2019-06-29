@@ -1,13 +1,13 @@
 package io.github.n3roo.math.body;
 
-import javafx.scene.shape.Polygon;
+import io.github.n3roo.math.body.shapes.Shape;
 
 public class Body {
 
     /**
      * Shape of this rigid body.
      */
-    private Polygon hitbox;
+    private Shape hitbox;
 
     /**
      * Mass of this rigid body.
@@ -19,7 +19,7 @@ public class Body {
      * @param hitbox the collision polygon,
      * @param mass the mass of the rigid body. (value < 0 means an infinite mass)
      */
-    public Body(Polygon hitbox, double mass){
+    public Body(Shape hitbox, double mass){
         this.hitbox = hitbox;
         this.mass = mass;
     }
@@ -27,7 +27,7 @@ public class Body {
     /**
      * @return the shape of this rigid body.
      */
-    public Polygon getHitbox(){
+    public Shape getHitbox(){
         return this.hitbox;
     }
 
