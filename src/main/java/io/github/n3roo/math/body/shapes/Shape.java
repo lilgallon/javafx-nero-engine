@@ -1,6 +1,7 @@
 package io.github.n3roo.math.body.shapes;
 
 import io.github.n3roo.math.Position;
+import javafx.scene.canvas.GraphicsContext;
 
 public abstract class Shape {
 
@@ -25,6 +26,8 @@ public abstract class Shape {
     }
 
     protected abstract void propertyUpdated();
+
+    public abstract void draw(GraphicsContext g);
 
     public Position getPosition() {
         return position;

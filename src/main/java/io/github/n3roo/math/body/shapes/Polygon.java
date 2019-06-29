@@ -1,6 +1,7 @@
 package io.github.n3roo.math.body.shapes;
 
 import io.github.n3roo.math.Position;
+import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
 
@@ -47,6 +48,19 @@ public class Polygon extends Shape{
     @Override
     protected void propertyUpdated() {
         transform();
+    }
+
+    @Override
+    public void draw(GraphicsContext g) {
+        double[] xPoints = new double[points.size()];
+        double[] yPoints = new double[points.size()];
+
+        for(int i = 0; i < points.size(); i++) {
+            xPoints[i] = points.get(i).x;
+            yPoints[i] = points.get(i).y;
+        }
+
+        g.fillPolygon(xPoints, yPoints, points.size());
     }
 
     public ArrayList<Position> getModel() {
