@@ -53,6 +53,10 @@ public class Position {
         return this;
     }
 
+    public Vec2d toVec2d(){
+        return new Vec2d(x, y);
+    }
+
     /**
      * @return a copy of the current object.
      */

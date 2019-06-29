@@ -8,6 +8,12 @@ import java.util.ArrayList;
 
 public class CollisionAlgorithms {
 
+    /**
+     * It analyses the collision (if there is one) between the two given polygons using SAT algorithm.
+     * @param a the reference polygon,
+     * @param b the target polygon.
+     * @return the collision result between two *convex* polygon (not working properly with concave polygons)
+     */
     public static CollisionResult polygonPolygonSAT(Polygon a, Polygon b) {
         CollisionResult collisionResult = new CollisionResult(a, b);
 
@@ -44,6 +50,52 @@ public class CollisionAlgorithms {
         }
 
         collisionResult.overlap = true;
+        return collisionResult;
+    }
+
+    /**
+     * It analyses the collision (if there is one) between the two given polygons using diagonals.
+     * @param a the reference polygon,
+     * @param b the target polygon.
+     * @return the collision result between two *convex* polygon (not working properly with concave polygons)
+     */
+    public static CollisionResult polygonPolygonDIAG(Polygon a, Polygon b) {
+        CollisionResult collisionResult = new CollisionResult(a, b);
+
+        Polygon poly1 = a.copy();
+        Polygon poly2 = b.copy();
+
+        for(int shape = 0; shape < 2; shape ++) {
+            if (shape == 1) {
+                poly1 = b.copy();
+                poly2 = a.copy();
+            }
+
+            // Check diagonals of polygon ...
+            for(int p = 0; p < poly1.getWorldPoints().size(); p++) {
+                Vec2d lineP1s = poly1.getPosition().toVec2d();
+                Vec2d lineP1e = poly1.getWorldPoints().get(p).toVec2d();
+
+                // ... against edges of the other
+                for(int q = 0; q < poly2.getWorldPoints().size(); q++) {
+                    Vec2d lineP2s = poly2.getWorldPoints().get(q).toVec2d();
+                    Vec2d lineP2e = poly2.getWorldPoints().get((q + 1) % poly2.getWorldPoints().size()).toVec2d();
+
+                    // "off the shelf" line segment intersection
+                    double h = (lineP2e.x - lineP2s.x) * (lineP1s.y - lineP1e.y) - (lineP1s.x - lineP1e.x) * (lineP2e.y - lineP2s.y);
+                    double t1 = ((lineP2s.y - lineP2e.y) * (lineP1s.x - lineP2s.x) + (lineP2e.x - lineP2s.x) * (lineP1s.y - lineP2s.y)) / h;
+                    double t2 = ((lineP1s.y - lineP1e.y) * (lineP1s.x - lineP2s.x) + (lineP1e.x - lineP1s.x) * (lineP1s.y - lineP2s.y)) / h;
+
+                    if (t1 >= 0.0f && t1 < 1.0f && t2 >= 0.0f && t2 < 1.0f) {
+                        collisionResult.overlap = true;
+                        return collisionResult;
+                    }
+                }
+            }
+
+        }
+
+        collisionResult.overlap = false;
         return collisionResult;
     }
 
