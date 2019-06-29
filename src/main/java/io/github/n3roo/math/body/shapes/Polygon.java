@@ -60,7 +60,7 @@ public class Polygon extends Shape{
             yPoints[i] = points.get(i).y;
         }
 
-        g.fillPolygon(xPoints, yPoints, points.size());
+        g.strokePolygon(xPoints, yPoints, points.size());
     }
 
     public ArrayList<Position> getModel() {
