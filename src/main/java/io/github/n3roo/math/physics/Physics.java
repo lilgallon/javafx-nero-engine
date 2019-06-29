@@ -1,5 +1,6 @@
 package io.github.n3roo.math.physics;
 
+import io.github.n3roo.math.Vec2d;
 import io.github.n3roo.math.body.shapes.Polygon;
 import io.github.n3roo.math.physics.collision.CollisionAlgorithms;
 import io.github.n3roo.math.physics.collision.CollisionResult;
@@ -71,12 +72,10 @@ public class Physics {
      * @param movement the movement to apply.
      */
     private static void handleCollisionsAndMove(Entity entity, Point2D movement){
-        if(entity.getBody() == null){
-            // The entity does not have a rigid body, so we don't need to handle collisions.
-            entity.move(movement.getX(), movement.getY());
-        }else{
-            // TODO: handle collision
+        entity.move(movement.getX(), movement.getY());
 
+        if(entity.getBody() != null){
+            // Handle collision
             for(Entity target : World.getEntities()) {
                 if(entity.equals(target)) continue;
                 if(target.getBody() == null) continue;
@@ -90,12 +89,32 @@ public class Physics {
                 }
 
                 if(collisionResult != null) {
-                    if(collisionResult.overlap) System.out.println("OVERLAP");
+                    if(collisionResult.overlap){
+                        // Mass handling
+                        double referenceMass = entity.getBody().getMass();
+                        double targetMass = target.getBody().getMass();
+
+                        double percentage;
+                        if(targetMass == 0 && referenceMass == 0){
+                            // Prevent division by 0
+                            percentage = 0f;
+                        }else if(referenceMass < 0){
+                            // Infinite mass (it won't move)
+                            percentage = 0f;
+                        }else if(targetMass < 0 || referenceMass == 0){
+                            // The other one has infinite mass (g1 will move)
+                            percentage = 1f;
+                        }else{
+                            // Otherwise, we take the right percentage
+                            percentage = (targetMass * 100 / (referenceMass + targetMass) ) / 100;
+                        }
+
+                        collisionResult.displacement.multiply(percentage);
+
+                        entity.move(collisionResult.displacement.x, collisionResult.displacement.y);
+                    }
                 }
             }
-
-            entity.move(movement.getX(), movement.getY());
-
         }
     }
 }

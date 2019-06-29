@@ -64,7 +64,7 @@ public class Player extends Entity {
             double dx = Mouse.getX() - position.x;
             double dy = Mouse.getY() - position.y;
 
-            Bullet bullet = new Bullet(position.copy(), 5);
+            Bullet bullet = new Bullet(position.copy().move(20, 20), 5);
             bullet.fire(new Point2D(dx/10, dy/10));
             World.addEntity(bullet);
 
