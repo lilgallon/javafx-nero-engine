@@ -29,6 +29,8 @@ public abstract class Shape {
 
     public abstract void draw(GraphicsContext g);
 
+    public abstract Shape copy();
+
     public Position getPosition() {
         return position;
     }

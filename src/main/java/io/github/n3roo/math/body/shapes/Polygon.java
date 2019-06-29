@@ -63,6 +63,16 @@ public class Polygon extends Shape{
         g.strokePolygon(xPoints, yPoints, points.size());
     }
 
+    @Override
+    public Polygon copy(){
+        return new Polygon(position, rotation, model);
+    }
+
+    protected void setModel(ArrayList<Position> model) {
+        this.model = model;
+        propertyUpdated();
+    }
+
     public ArrayList<Position> getModel() {
         return model;
     }
