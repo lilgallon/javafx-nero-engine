@@ -2,7 +2,7 @@ package sample.entities;
 
 import io.github.n3roo.event.mouse.Mouse;
 import io.github.n3roo.math.body.Body;
-import io.github.n3roo.math.body.shapes.Rectangle;
+import io.github.n3roo.math.body.shapes.Polygon;
 import io.github.n3roo.util.TimeHelper;
 import io.github.n3roo.world.World;
 import javafx.geometry.Point2D;
@@ -33,7 +33,7 @@ public class Player extends Entity {
         model.add(new Position(0, -15));
         model.add(new Position(15, 0));
         model.add(new Position(0, 15));
-        body = new Body(new Rectangle(this.position.copy(), 0, model), 1);
+        body = new Body(new Polygon(this.position.copy(), 0, model), 1);
 
         fireTimer = new TimeHelper();
         fireTimer.start();
@@ -80,7 +80,7 @@ public class Player extends Entity {
         g.setFill(Color.GOLD);
         g.fillRect(position.x - 5, position.y - 5, 10, 10);
 
-        g.setFill(Color.BLUE);
+        g.setStroke(Color.RED);
         body.getHitbox().draw(g);
     }
 }
