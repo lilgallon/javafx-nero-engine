@@ -1,5 +1,9 @@
 package io.github.n3roo.math.physics;
 
+import io.github.n3roo.math.body.shapes.Polygon;
+import io.github.n3roo.math.physics.collision.CollisionAlgorithms;
+import io.github.n3roo.math.physics.collision.CollisionResult;
+import io.github.n3roo.world.World;
 import io.github.n3roo.world.entity.Entity;
 import javafx.geometry.Point2D;
 
@@ -71,8 +75,27 @@ public class Physics {
             // The entity does not have a rigid body, so we don't need to handle collisions.
             entity.move(movement.getX(), movement.getY());
         }else{
-            entity.move(movement.getX(), movement.getY());
             // TODO: handle collision
+
+            for(Entity target : World.getEntities()) {
+                if(entity.equals(target)) continue;
+                if(target.getBody() == null) continue;
+
+                CollisionResult collisionResult = null;
+                if(target.getBody().getHitbox() instanceof Polygon && entity.getBody().getHitbox() instanceof Polygon) {
+                    collisionResult = CollisionAlgorithms.polygonPolygonSAT(
+                            (Polygon) entity.getBody().getHitbox(),
+                            (Polygon) target.getBody().getHitbox()
+                    );
+                }
+
+                if(collisionResult != null) {
+                    if(collisionResult.overlap) System.out.println("OVERLAP");
+                }
+            }
+
+            entity.move(movement.getX(), movement.getY());
+
         }
     }
 }
