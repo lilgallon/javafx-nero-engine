@@ -1,6 +1,8 @@
 package sample.entities;
 
 import io.github.n3roo.math.Position;
+import io.github.n3roo.math.body.Body;
+import io.github.n3roo.math.body.shapes.Rectangle;
 import io.github.n3roo.math.physics.Force;
 import io.github.n3roo.world.entity.Particle;
 import javafx.geometry.Point2D;
@@ -16,6 +18,11 @@ public class Bullet extends Particle {
         super(position);
         this.radius = radius;
         this.fired = false;
+
+        this.body = new Body(
+                new Rectangle(position.copy(), radius*2, radius*2, 0, true),
+                1
+        );
     }
 
     public void fire(Point2D impulse) {
@@ -26,7 +33,10 @@ public class Bullet extends Particle {
     @Override
     public void render(GraphicsContext g){
         g.setFill(Color.BLACK);
-        g.fillOval(position.x - radius, position.y - radius, radius, radius);
+        g.fillOval(position.x - radius, position.y - radius, radius*2, radius*2);
+
+        g.setStroke(Color.RED);
+        this.body.getHitbox().draw(g);
     }
 
     @Override
