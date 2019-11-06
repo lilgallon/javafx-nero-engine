@@ -2,7 +2,7 @@
 
 [![travisCI](https://img.shields.io/travis/N3ROO/javafx-nero-engine/master.svg)](https://travis-ci.org/N3ROO/javafx-nero-engine/) [![Maintainability](https://api.codeclimate.com/v1/badges/93fb4cbc9869d1673d87/maintainability)](https://codeclimate.com/github/N3ROO/javafx-nero-engine/maintainability) [![codecov](https://codecov.io/gh/N3ROO/javafx-nero-engine/branch/master/graph/badge.svg)](https://codecov.io/gh/N3ROO/javafx-nero-engine) [![code climate issues](https://img.shields.io/codeclimate/issues/N3ROO/javafx-nero-engine.svg)](https://codeclimate.com/github/N3ROO/javafx-nero-engine/issues) [![release](https://img.shields.io/github/release/n3roo/nero-engine.svg)](https://github.com/N3ROO/javafx-nero-engine/releases) 
 
-An easy to use java 2D game engine powered by JavaFX 12. 🎮
+An easy to use java 2D game engine powered by JavaFX 13. 🎮
 
 ## 1. Progression
 
@@ -42,7 +42,7 @@ Then make sure to right click on:
 - "src/test/java", add "Mark Directory as" -> "Test Sources root",
 - "src/demo/java", add "Mark Directory as" -> "Sources root",
 - "src/demo/resources", add "Mark Directory as" -> "Resources root".
-Also, make sure to use Java 12 (File -> Project Structure -> Project SDK: 12 & Language level: 12 ).
+Also, make sure to use Java 13 (File -> Project Structure -> Project SDK: 13 & Language level: 13).
 
 Folders :
 - **src/main**: contains the engine source code,
